@@ -75,8 +75,3 @@ Al ejecutar el programa se generan:
   - Señal original
   - Señales filtradas por Kalman, ARIMA, Mediana
   - Señal híbrida combinada
-- Una visualización ASCII de la señal final en consola
-
-## Licencia
-
-MIT License. Puedes modificar, usar y distribuir este código con atribución adecuada.
