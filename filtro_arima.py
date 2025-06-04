@@ -11,6 +11,23 @@ from montecarlo import EvaluadorMonteCarlo
 warnings.filterwarnings("ignore", category=UserWarning, module="statsmodels")
 warnings.simplefilter("ignore", ConvergenceWarning)
 
+# ------------------------------------------------------------------------------
+# Clase: FiltroARIMA
+# Descripción:
+#   Implementa un modelo ARIMA (AutoRegresivo Integrado de Media Móvil) para
+#   suavizado de series temporales. Ajusta el modelo a los datos y devuelve
+#   los valores ajustados como señal filtrada.
+# Entradas:
+#   - datos: señal original (serie temporal).
+#   - p, d, q: parámetros del modelo ARIMA.
+# Salidas:
+#   - Método aplicar() devuelve la señal suavizada con el modelo ajustado.
+# Notas:
+#   - Se usa la clase ARIMA de la biblioteca statsmodels.
+#   - El modelo ARIMA es un enfoque estadístico común y probado
+#     en análisis de series temporales.
+#   - Se ignoran advertencias de convergencia para evitar ruido en consola.
+# ------------------------------------------------------------------------------
 class FiltroARIMA:
     def __init__(self, datos, p, d, q):
         self.datos = datos
@@ -23,6 +40,20 @@ class FiltroARIMA:
         resultado = modelo.fit()
         return resultado.fittedvalues
 
+# ------------------------------------------------------------------------------
+# Clase: FiltroARIMAOptimizado
+# Descripción:
+#   Ajusta automáticamente los parámetros (p, d, q) del modelo ARIMA usando un
+#   algoritmo genético y evaluación basada en simulaciones Monte Carlo.
+# Entradas:
+#   - datos: señal original (serie temporal).
+# Salidas:
+#   - Método ejecutar() devuelve la señal suavizada con parámetros óptimos.
+# Notas:
+#   - Esta clase automatiza el uso de ARIMA sin intervención manual,
+#     como parte del enfoque híbrido.
+#   - Utiliza un optimizador evolutivo (genético) y validación estocástica.
+# ------------------------------------------------------------------------------
 class FiltroARIMAOptimizado:
     def __init__(self, datos):
         self.datos = datos

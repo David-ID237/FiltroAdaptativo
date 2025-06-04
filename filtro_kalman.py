@@ -3,6 +3,23 @@ import numpy as np
 from genetico import AlgoritmoGenetico
 from montecarlo import EvaluadorMonteCarlo
 
+# ------------------------------------------------------------------------------
+# Clase: FiltroKalman
+# Descripción:
+#   Implementación del filtro de Kalman para una señal unidimensional con modelo
+#   de posición-velocidad. El modelo asume movimiento constante.
+# Entradas:
+#   - datos: señal original a filtrar.
+#   - Q: covarianza del proceso (ruido de sistema).
+#   - R: varianza de la observación (ruido de medición).
+# Salidas:
+#   - Método aplicar() devuelve la señal suavizada (posición estimada).
+# Notas:
+#   - Esta implementación sigue el modelo clásico de Kalman para sistemas lineales,
+#     discretos y con ruido gaussiano blanco.
+#   - Código escrito por Gutierrez Chavero David con base en formulaciones estándar
+#     de la literatura.
+# ------------------------------------------------------------------------------
 class FiltroKalman:
     def __init__(self, datos, Q, R):
         self.datos = datos
@@ -37,6 +54,19 @@ class FiltroKalman:
 
         return np.array(resultados)
 
+# ------------------------------------------------------------------------------
+# Clase: FiltroKalmanOptimizado
+# Descripción:
+#   Ejecuta el filtro de Kalman sobre una señal, optimizando automáticamente los
+#   parámetros Q y R mediante un algoritmo genético y evaluación Monte Carlo.
+# Entradas:
+#   - datos: señal original a filtrar.
+# Salidas:
+#   - Método ejecutar() devuelve la señal suavizada con los parámetros óptimos.
+# Notas:
+#   - La función de evaluación compara la señal filtrada contra la original usando
+#     métodos de simulación Monte Carlo.
+# ------------------------------------------------------------------------------
 class FiltroKalmanOptimizado:
     def __init__(self, datos):
         self.datos = datos

@@ -3,6 +3,27 @@ import numpy as np
 from scipy.fft import fft
 from scipy.stats import entropy
 
+# ------------------------------------------------------------------------------
+# Clase: EvaluadorMonteCarlo
+# Descripción:
+#   Evalúa la calidad de una señal filtrada mediante un conjunto de métricas
+#   cuantitativas, combinadas en una única puntuación. Esta evaluación guía
+#   el proceso de optimización de los filtros usando simulaciones tipo
+#   Monte Carlo.
+#
+# Métodos:
+#   - evaluar(original, filtrada):
+#       Calcula un puntaje compuesto considerando similitud espectral, suavidad,
+#       entropía y varianza. Penaliza señales demasiado planas o con pérdida de
+#       información espectral relevante.
+#
+#   - promedio_metricas(lista_resultados):
+#       Calcula el promedio de una lista de evaluaciones.
+#
+# Notas:
+#   - Las métricas utilizadas combinan heurísticas comunes en análisis de
+#     señales (FFT, entropía de Shannon, derivadas, varianza).
+# ------------------------------------------------------------------------------
 class EvaluadorMonteCarlo:
     @staticmethod
     def evaluar(original, filtrada):
