@@ -1,0 +1,11 @@
+filtro_adaptativo/
+│
+├── main.py                  # Punto de entrada (usa argparse)
+├── lector_csv.py            # Carga y preprocesa datos
+├── filtro_kalman.py         # Implementa filtro de Kalman con optimización
+├── filtro_mediana.py        # Filtro mediana con optimización
+├── filtro_arima.py          # Filtro ARIMA con optimización
+├── genetico.py              # Algoritmo genético común
+├── montecarlo.py            # Evaluación de señales
+├── hibrido.py               # Combinación ponderada de salidas
+└── graficas.py              # Crea las gráficas
